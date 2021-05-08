@@ -69,12 +69,14 @@ void writelog(uint16_t loglevel, char *message) {
 
   if (lformat & FORMAT_LOGLEVEL) {
     if (loglevel == 0)
-      msgoffset += sprintf(msgoffset, "[%s]", "MESSAGE");
+      msgoffset += sprintf(msgoffset, "[%s] ", "MESSAGE");
     else if (loglevel == 1)
-      msgoffset += sprintf(msgoffset, "[%s]", "WARNING");
+      msgoffset += sprintf(msgoffset, "[%s] ", "WARNING");
     else if (loglevel == 2)
-      msgoffset += sprintf(msgoffset, "[%s]", "ERROR");
+      msgoffset += sprintf(msgoffset, "[%s] ", "ERROR");
   }
+
+  msgoffset += sprintf(msgoffset, "%s", message);
 
   if (f_logfile != NULL) {
     writetofile(msgstring);

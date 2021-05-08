@@ -1,13 +1,23 @@
 .DEFAULT_GOAL := build
 .PHONY := build clean
+.IGNORE := run
 
-DIRS := $(wildcard src/*/.)
+BIN_PATH := ./bin/cmacs
 
-build: $(DIRS)
+DIRS:=$(wildcard src/*/.)
+DIRS_SHELL=$(ls -d src/*)
 
-%:
-	$(MAKE) -C $<
+OBJS=$(shell find obj/ -type f -print)
+
+build: 
+	mkdir -p ./bin
+	@echo $(DIRS)
+	-$(foreach dir, $(DIRS),$(shell $(MAKE) -C $(dir)))
+	gcc -o $(BIN_PATH) $(OBJS)
 
 clean:
-	rm -r ./obj
-	rm -r ./bin
+	-rm -r ./obj
+	-rm -r ./bin
+
+run:
+	./bin/cmacs
