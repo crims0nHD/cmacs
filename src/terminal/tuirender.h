@@ -13,7 +13,7 @@ struct fb_properties {
 extern char *fb_get();
 
 // Call the render method to prepare the framebuffer
-extern void render();
+extern void render(void *arg);
 
 // Set the properties for the next render process
 extern void fb_setProperties(struct fb_properties prop);

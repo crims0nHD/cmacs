@@ -29,6 +29,7 @@ void draw(void *arg) {
 
 void tuigraphics_init() {
   initscr();
+  curs_set(false);
   getmaxyx(stdscr, winy, winx);
   struct fb_properties p;
   p.sizex = winx;

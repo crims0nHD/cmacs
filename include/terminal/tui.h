@@ -1,6 +1,8 @@
 #ifndef TUI_H_
 #define TUI_H_
 
+#include "types/pri.h"
+
 /* Events */
 //---------------
 // render
@@ -16,5 +18,16 @@
 
 extern void tuiinit();
 extern void tuiexit();
+
+enum {
+  CTRL = 1 << 0,
+  META = 1 << 1,
+  SHIFT = 1 << 2,
+};
+
+struct inputstate {
+  u32 mods;
+  char c;
+};
 
 #endif // TUI_H_

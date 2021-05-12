@@ -4,6 +4,7 @@
 #include "logger.h"
 #include "terminal/tui.h"
 #include "types/null.h"
+#include "userspace/userspace.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
@@ -23,10 +24,7 @@ int main(int argc, char **argv) {
   srand(time(NULL));
   setupApp();
 
-  eh_call(eh_getEventId("render"), NULL);
-  eh_call(eh_getEventId("redraw"), NULL);
-
-  sleep(5);
+  loop();
 
   // do emergency exit from main...
   // NOTE: this should probably never happen
