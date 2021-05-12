@@ -1,6 +1,8 @@
 #include "controlFlowEvents.h"
 #include "core/eventhandler.h"
+#include "eventhandler.h"
 #include "logger.h"
+#include "terminal/tui.h"
 #include "types/null.h"
 #include <stdbool.h>
 #include <stdlib.h>
@@ -13,17 +15,21 @@ static void setupApp() {
 
   ehandlerinit();
   setupEvents();
+
+  tuiinit();
 }
 
 int main(int argc, char **argv) {
   srand(time(NULL));
   setupApp();
 
-  sleep(5);
-  eh_call(eh_getEventId("halt"));
+  eh_call(eh_getEventId("render"));
+  eh_call(eh_getEventId("redraw"));
 
-  ehandlerexit();
-  logmessage("Stopping application from main?");
-  logexit();
+  sleep(5);
+
+  // do emergency exit from main...
+  // NOTE: this should probably never happen
+  eh_call(eh_getEventId("halt"));
   return 0;
 }

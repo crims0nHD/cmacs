@@ -9,7 +9,7 @@ types: dirs $(OBJS)
 	@echo $(OBJS)
 
 ../../obj/types/%.o: %.c
-	gcc $(INCLUDES) -c -o $@ $<
+	gcc $(INCLUDES) -c -g -o $@ $<
 
 dirs:
 	mkdir -p ../../obj/types

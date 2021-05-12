@@ -3,9 +3,6 @@
 
 #include <stdint.h>
 
-extern uint16_t ehandlerinit();
-extern void ehandlerexit();
-
 extern uint32_t eh_create(char *name);
 extern uint32_t eh_getEventId(char *name);
 extern uint32_t eh_delete(uint32_t eventid);

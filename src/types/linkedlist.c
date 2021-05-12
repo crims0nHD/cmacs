@@ -15,7 +15,8 @@ ll_node *l_addafter(ll_node *prev, void *content) {
 
   // Setting properties of adjacent nodes
   if (prev != NULL) {
-    lln->nextnode->lastnode = lln;
+    if (lln->nextnode != NULL)
+      lln->nextnode->lastnode = lln;
     prev->nextnode = lln;
   }
 
@@ -35,7 +36,8 @@ ll_node *l_addbefore(ll_node *next, void *content) {
 
   // Setting properties of adjacent nodes
   if (next != NULL) {
-    lln->lastnode->nextnode = lln;
+    if (lln->lastnode != NULL)
+      lln->lastnode->nextnode = lln;
     next->lastnode = lln;
   }
 

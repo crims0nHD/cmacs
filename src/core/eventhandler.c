@@ -1,4 +1,5 @@
 #include "core/eventhandler.h"
+#include "eventhandler.h"
 #include "logger.h"
 #include "types/linkedlist.h"
 #include "types/null.h"
@@ -98,7 +99,7 @@ void eh_call(uint32_t eventid) {
   while (lenum != NULL) {
     void (*fptr)() = lenum->content;
     (*fptr)();
-    l_next(lenum);
+    lenum = l_next(lenum);
   }
 }
 

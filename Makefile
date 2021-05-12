@@ -13,7 +13,7 @@ build:
 	mkdir -p ./bin
 	@echo $(DIRS)
 	-$(foreach dir, $(DIRS),$(shell $(MAKE) -C $(dir)))
-	gcc -o $(BIN_PATH) $(OBJS)
+	gcc -g -lncurses -o $(BIN_PATH) $(OBJS)
 
 clean:
 	-rm -r ./obj
@@ -21,3 +21,6 @@ clean:
 
 run:
 	./bin/cmacs
+
+debug:
+	gdb ./bin/cmacs

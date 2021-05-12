@@ -9,7 +9,7 @@ core: dirs $(OBJS)
 	@echo $(OBJS)
 
 ../../obj/core/%.o: %.c
-	gcc $(INCLUDES) -c -o $@ $<
+	gcc $(INCLUDES) -c -g -o $@ $<
 
 dirs:
 	mkdir -p ../../obj/core
