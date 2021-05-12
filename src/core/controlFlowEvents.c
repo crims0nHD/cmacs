@@ -5,7 +5,7 @@
 #include "terminal/tui.h"
 #include <stdlib.h>
 
-static void ev_HaltProgram() {
+static void ev_HaltProgram(void *arg) {
   logmessage("Shutting down due to halt event being called! :)");
   tuiexit();
   ehandlerexit();

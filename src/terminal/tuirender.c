@@ -58,7 +58,7 @@ void fb_setProperties(struct fb_properties prop) {
   hasPropChanged = true;
 }
 
-void render() {
+void render(void *arg) {
   // Check for framebuffer things
   if (!framebuffer_back)
     fb_createOrResize(fb_prop->sizex, fb_prop->sizey);

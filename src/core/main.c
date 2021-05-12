@@ -23,13 +23,13 @@ int main(int argc, char **argv) {
   srand(time(NULL));
   setupApp();
 
-  eh_call(eh_getEventId("render"));
-  eh_call(eh_getEventId("redraw"));
+  eh_call(eh_getEventId("render"), NULL);
+  eh_call(eh_getEventId("redraw"), NULL);
 
   sleep(5);
 
   // do emergency exit from main...
   // NOTE: this should probably never happen
-  eh_call(eh_getEventId("halt"));
+  eh_call(eh_getEventId("halt"), NULL);
   return 0;
 }

@@ -8,7 +8,7 @@
 static int winx = 0;
 static int winy = 0;
 
-void draw() {
+void draw(void *arg) {
   int curx, cury;
   getmaxyx(stdscr, cury, curx);
   if (curx != winx || cury != winy) {

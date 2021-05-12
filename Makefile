@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := build
-.PHONY := build clean
+.PHONY := build clean updateProjectStructure
 .IGNORE := run
 
 BIN_PATH := ./bin/cmacs
@@ -9,11 +9,14 @@ DIRS_SHELL=$(ls -d src/*)
 
 OBJS=$(shell find obj/ -type f -print)
 
-build: 
+build:
 	mkdir -p ./bin
 	@echo $(DIRS)
-	-$(foreach dir, $(DIRS),$(shell $(MAKE) -C $(dir)))
+	-$(foreach dir, $(DIRS), $(shell $(MAKE) -C $(dir)))
 	gcc -g -lncurses -o $(BIN_PATH) $(OBJS)
+
+updateProjectStructure:
+	$(shell ./updateMakefiles.sh) 
 
 clean:
 	-rm -r ./obj

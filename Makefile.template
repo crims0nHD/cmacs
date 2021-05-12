@@ -1,0 +1,15 @@
+SRCS := $(wildcard *.c)
+OBJS := $(patsubst %.c, ../../obj/replaceme/%.o, $(SRCS))
+INCLUDES := -I../../include
+
+.DEFAULT_GOAL := replaceme
+.PHONY := dirs replaceme
+
+replaceme: dirs $(OBJS)
+	@echo $(OBJS)
+
+../../obj/replaceme/%.o: %.c
+	gcc $(INCLUDES) -c -g -o $@ $<
+
+dirs:
+	mkdir -p ../../obj/replaceme

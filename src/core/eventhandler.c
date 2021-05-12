@@ -89,7 +89,7 @@ uint16_t eh_unsubscribe(uint32_t eventid, void (*functionToCall)()) {
   return 0;
 }
 
-void eh_call(uint32_t eventid) {
+void eh_call(uint32_t eventid, void *arg) {
   event *e = getEventById(eventid);
   if (e == NULL) {
     return;
@@ -97,8 +97,8 @@ void eh_call(uint32_t eventid) {
 
   ll_node *lenum = e->l_subscribedFunctions;
   while (lenum != NULL) {
-    void (*fptr)() = lenum->content;
-    (*fptr)();
+    void (*fptr)(void *) = lenum->content;
+    (*fptr)(arg);
     lenum = l_next(lenum);
   }
 }
