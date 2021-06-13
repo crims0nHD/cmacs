@@ -5,6 +5,7 @@
 #include "terminal/tui.h"
 #include "types/null.h"
 #include "userspace/userspace.h"
+
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
@@ -16,6 +17,8 @@ static void setupApp() {
 
   ehandlerinit();
   setupEvents();
+
+  buffersInit();
 
   tuiinit();
 }
